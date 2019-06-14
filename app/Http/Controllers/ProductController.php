@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\Product\ProductResource;
 use App\Model\Product;
 use Illuminate\Http\Request;
 
@@ -14,18 +15,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        return Product::all();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -39,25 +31,16 @@ class ProductController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * product json data
      *
      * @param  \App\Model\Product  $product
-     * @return \Illuminate\Http\Response
+     * @return json data
      */
+
     public function show(Product $product)
     {
-        //
-    }
+        return new ProductResource($product);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Model\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Product $product)
-    {
-        //
     }
 
     /**
