@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->text('detail');
             $table->decimal('price');
             $table->integer('stock');
-            $table->decimal('discount');
+            $table->integer('discount');
             $table->timestamps();
 
         });

@@ -12,6 +12,6 @@ $factory->define(Product::class, function (Faker $faker) {
     	'detail' => $faker->sentence,
     	'price' => $faker->randomFloat(null,10,1000),
     	'stock' => $faker->randomDigit(10,100),
-	    'discount' => $faker->randomFloat(null,10,1000),
+	    'discount' => $faker->randomDigit(0,100),
     ];
 });
