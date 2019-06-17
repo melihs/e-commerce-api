@@ -52,7 +52,6 @@ class ProductController extends Controller
      * @param  \App\Model\Product  $product
      * @return json data
      */
-
     public function show(Product $product)
     {
         return new ProductResource($product);
@@ -68,7 +67,12 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+    	$request['detail'] = $request->description;
+    	unset($request['description']);
+        $product->update($request->all());
+
+	    return response(['data' => new ProductResource($product)],200);
+
     }
 
     /**
