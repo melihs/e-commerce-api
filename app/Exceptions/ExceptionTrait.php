@@ -13,7 +13,7 @@ trait ExceptionTrait
 	 *
 	 * @return \Illuminate\Http\JsonResponse
 	 */
-	protected function apiException($request,$e)
+	public function apiException($request,$e)
 	{
 		if($this->isModel($e))
 		{
