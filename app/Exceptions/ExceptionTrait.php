@@ -13,7 +13,7 @@ trait ExceptionTrait
 	 *
 	 * @return \Illuminate\Http\JsonResponse
 	 */
-	public function apiException($request,$e)
+	protected function apiException($request,$e)
 	{
 		if($this->isModel($e))
 		{
@@ -34,7 +34,7 @@ trait ExceptionTrait
 	 *
 	 * @return bool
 	 */
-	public function isModel($e)
+	protected function isModel($e)
 	{
 		return $e instanceof ModelNotFoundException;
 	}
@@ -44,7 +44,7 @@ trait ExceptionTrait
 	 *
 	 * @return bool
 	 */
-	public function isHttp($e)
+	protected function isHttp($e)
 	{
 		return $e instanceof NotFoundHttpException;
 	}
@@ -55,7 +55,7 @@ trait ExceptionTrait
 	 *
 	 * @return \Illuminate\Http\JsonResponse
 	 */
-	public function modelResponse($e)
+	protected function modelResponse($e)
 	{
 		return response()->json(['errors'=> 'Product not found'],404);
 	}
@@ -65,7 +65,7 @@ trait ExceptionTrait
 	 *
 	 * @return \Illuminate\Http\JsonResponse
 	 */
-	public function httpResponse($e)
+	protected function httpResponse($e)
 	{
 		return response()->json(['errors'=> 'Incorect route'],404);
 
