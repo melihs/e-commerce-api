@@ -7,10 +7,15 @@ use App\Http\Resources\Product\ProductResource;
 use App\Http\Resources\Product\ProductCollection;
 use App\Model\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Exceptions\ProductNotBelongsToUser;
 
 class ProductController extends Controller
 {
 
+	/**
+	 * ProductController constructor.
+	 */
 	public function __construct()
 	{
 		$this->middleware('auth:api')->except('index','show');
@@ -35,7 +40,8 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
-    	$product = new Product();
+	    $product = new Product();
+	    $product->user_id = Auth::id();
     	$product->name = $request->name;
     	$product->detail = $request->description;
     	$product->stock = $request->stock;
@@ -67,6 +73,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
+    	$this->productUserCheck($product);
     	$request['detail'] = $request->description;
     	unset($request['description']);
         $product->update($request->all());
@@ -83,9 +90,20 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+    	$this->productUserCheck($product);
     	$product->delete();
 
 	    return response(null,204);
+    }
 
+	/**
+	 * @param $product
+	 */
+	public function productUserCheck($product)
+	{
+		if(Auth::id() !== $product->user_id )
+		{
+			throw new ProductNotBelongsToUser;
+		}
     }
 }
