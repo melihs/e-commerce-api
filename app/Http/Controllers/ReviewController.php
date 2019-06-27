@@ -70,6 +70,6 @@ class ReviewController extends Controller
     {
         $review->delete();
 
-	    return response(['data' => new ReviewResource($review)],204);
+	    return response(null,204);
     }
 }
