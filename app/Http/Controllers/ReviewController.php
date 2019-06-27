@@ -20,19 +20,18 @@ class ReviewController extends Controller
         return ReviewResource::collection($product->reviews);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+	/**
+	 * @param  ReviewRequest  $request
+	 * @param  Product        $product
+	 *
+	 * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+	 */
     public function store(ReviewRequest $request, Product $product)
     {
 		$review = new Review($request->all());
 		$product->reviews()->save($review);
 
 	    return response(['data' => new ReviewResource($review)],201);
-
     }
 
     /**
@@ -47,16 +46,18 @@ class ReviewController extends Controller
     }
 
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Model\Review  $review
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Review $review)
+	/**
+	 * @param  Request  $request
+	 * @param  Product  $product
+	 * @param  Review   $review
+	 *
+	 * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+	 */
+    public function update(Request $request,Product $product,Review $review)
     {
-        //
+        $review->update($request->all());
+
+        return response(['data' => new ReviewResource($review)],200);
     }
 
     /**
@@ -65,8 +66,10 @@ class ReviewController extends Controller
      * @param  \App\Model\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Review $review)
+    public function destroy(Product $product,Review $review)
     {
-        //
+        $review->delete();
+
+	    return response(['data' => new ReviewResource($review)],204);
     }
 }

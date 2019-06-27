@@ -61,7 +61,6 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         return new ProductResource($product);
-
     }
 
     /**
@@ -79,7 +78,6 @@ class ProductController extends Controller
         $product->update($request->all());
 
 	    return response(['data' => new ProductResource($product)],200);
-
     }
 
     /**
