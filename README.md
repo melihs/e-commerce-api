@@ -1,7 +1,7 @@
 
 ## E-commerce API 
 
-## Api doc
+## Api document
 - https://documenter.getpostman.com/view/3096316/S1Zw8qeU 
 
 ## Libraries in the Project
@@ -29,8 +29,11 @@
 ```console
 $ git clone https://github.com/melihs/e-commerce-api.git 
 $ cd e-commerce-api && composer install
+$ cp .env.example .env
+- create new database and modifed your .env
 $ php artisan migrate:fresh --seed
-$ php artisan passport:install 
+$ php artisan passport:install
+$ php artisan key:generate 
 $ php artisan serve
 ```
 
