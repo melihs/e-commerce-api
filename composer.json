@@ -1,14 +1,15 @@
 {
-    "name": "laravel/laravel",
+    "name": "e-commerce-api",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "E Commerce Restful API development with Laravel 5.8",
     "keywords": [
         "framework",
         "laravel"
     ],
-    "license": "MIT",
+    "license": "GPL-3.0",
     "require": {
         "php": "^7.1.3",
+        "barryvdh/laravel-cors": "^0.11.3",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.8.*",
         "laravel/passport": "^7.3",
