@@ -5,8 +5,8 @@
 - https://documenter.getpostman.com/view/3096316/S1Zw8qeU 
 
 ## Libraries in the Project
-- Laravel/passport (Laravel Passport is an OAuth2 server)
-
+- Laravel/passport (Laravel Passport is an OAuth2 server) https://laravel.com/docs/5.8/passport
+- laravel-cors https://github.com/barryvdh/laravel-cors
 ## All Endpoints
 ```
  GET|HEAD  | api/user                                      
