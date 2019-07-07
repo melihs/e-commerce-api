@@ -34,17 +34,6 @@ class ReviewController extends Controller
 	    return response(['data' => new ReviewResource($review)],201);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Model\Review  $review
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Review $review)
-    {
-        //
-    }
-
 
 	/**
 	 * @param  Request  $request
